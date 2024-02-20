@@ -1,0 +1,490 @@
+#list_container{
+    margin-top: 40px;
+}
+.title_adminhr{
+    margin-top:1%;
+}
+.content_page {
+    height: calc(100vh - 64px) !important;
+    padding: 0px 71px;
+    padding-top: 37px;
+    margin: 0px;
+    margin-right:1%;
+}
+
+.search-box{
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    border: 10px solid transparent;
+}
+
+.input-search{
+    height: 50px;
+    width: 360px;
+    font-size: 16px;
+    line-height: 21px;
+    outline: none;
+    padding-right: 40px;
+    color:#C79E0A;
+    border: none;
+    border-bottom: 1px solid #161616;
+    cursor: pointer;
+}
+
+.input-search::placeholder{
+    color: #C79E0A;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 700;
+}
+
+.btn-search{
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color:#C79E0A;
+    background-color:transparent;
+}
+
+.btn-search:focus{
+    border: none;
+    outline: none;
+}
+
+.person_background{
+    background-color: #EEEEEE;
+    box-sizing: border-box;
+    border: 10px solid transparent;
+    background-clip: padding-box;
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+}
+
+.pic{
+    max-width: 100px;
+    height: 100px;   
+    width: auto;
+    object-fit: cover; 
+    border-radius: 50%;
+}
+
+span{
+    padding: 20px;
+}
+
+
+#align_create{
+    position:relative;                 
+    right:0;     
+}
+
+.button_profile {
+    display: flex;
+    height: 51px;
+    align-items: center;
+    color: #C79E0A;
+}
+
+.button_profile_create {
+    display: flex;
+    height: 51px;
+    align-items: center;
+}
+
+
+.button_profile-text {
+    color: #C79E0A;
+    width: fit-content;
+    margin: 0px 12px !important;
+}
+
+.button_profile-text:hover {
+    color: #C79E0A;
+}
+
+#add_filters:hover {
+    color: #C79E0A;
+}
+
+input[type=submit]:focus {
+    border: none;
+    outline: none;
+  } 
+
+.button_profile-text {
+    outline: none;
+    border: none;
+}
+
+.button_profile-add {
+    display: flex;
+    color: #C79E0A;
+}
+
+.button_profile-image {
+    height: 10px;
+    filter: invert(72%) sepia(57%) saturate(4534%) hue-rotate(15deg) brightness(98%) contrast(92%);
+}
+
+.button_profile-candidate {
+    height: 10px;
+}
+
+#description{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+#filter_search{
+    background: #EEEEEE;
+    border-radius: 3px;
+    height: 30px;
+}
+
+
+/* Large toggl switches */
+.custom-switch-lg .custom-control-label::before {
+    left: -2.25rem;
+    width: 3rem;
+    border-radius: 1.5rem;
+    background-color: #050505 !important;
+    border-color: #d7d9da !important;
+}
+
+.custom-switch-lg .custom-control-label::after {
+    top: calc(.25rem + 3px);
+    left: calc(-2.25rem + 4px);
+    width: calc(1.5rem - 6px);
+    height: calc(1.5rem - 6px);
+    border-radius: 1.5rem;
+}
+
+.custom-switch-lg .custom-control-input:checked ~ .custom-control-label::after {
+    transform: translateX(1.4rem);
+}
+
+.custom-switch-lg .custom-control-label::before {
+    height: 1.5rem;
+}
+
+.custom-switch-lg .custom-control-label {
+    padding-left: 1.5rem;
+    line-height: 1.7rem;
+}
+
+.container_header {
+    width: 256px;
+    height: 64px;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.text{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 27px;
+    text-align: center ;
+    color: #F6F6F6;
+}
+
+.border-right {
+    border-width:5px !important;
+    border-color: #C79E0A !important;
+    
+}
+
+.container_candidate {
+    width: 256px;
+    height: 100px;
+    max-width: 256px;
+    max-height: 100px;
+    overflow: auto;
+    background: #EEEEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_divided{
+    height: 100px;
+    max-height: 100px;
+    overflow: auto;
+    background: #EEEEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_changes{
+    height: 100px;
+    background: #EEEEEE;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status_pipeline{
+    position: absolute !important;
+    top: 40%;
+    bottom:40%;
+}
+.comment{
+    position: absolute !important;
+    top: 40%;
+    bottom:40%;
+}
+
+.change_button{
+    position: absolute !important;
+    bottom:10%;
+    right:3%;
+}
+
+.upload_button{
+    position: absolute !important;
+    bottom:19%;
+    right:4%;
+}
+
+
+.text_candidate{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 17px;
+    text-align: center;
+    color: #161616;
+}
+
+.text_comments{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 17px;
+    color: #161616;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap; 
+}
+
+.text_button{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 17px;
+}
+
+#add-comment-popup {
+    
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height:350px;
+    width: 800px;
+
+    background: #FFFFFF;
+    border-radius: 6px;
+
+	display: none;
+    text-align: center;
+
+}
+
+.center{
+    position: fixed;
+    top: 8%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-title-label {
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 21px;
+	line-height: 27px;
+    left: 43%;
+
+	color: #161616;
+
+}
+.center2{
+    position: fixed;
+    top: 53%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+}
+#write-comment {
+
+    width: 730px;
+    height: 250px;
+    
+    border: none;
+    outline: none;
+    background-color: #EEEEEE;
+    border-radius: 3px;
+}
+
+.center3 {
+    position: fixed;
+    top: 90%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+}
+
+.align-right-status {
+    position: relative;
+    left: 470px;
+}
+
+#change-status-popup {
+
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    height: 150px;
+
+    background: #FFFFFF;
+    border-radius: 6px;
+
+    display: none;
+}
+
+.center4 {
+    position: fixed;
+    top: 13%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+}
+
+.center5 {
+    position: fixed;
+    top: 75%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-label {
+	position: relative;
+    top: 20px;
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 21px;
+	line-height: 27px;
+    left: 10%;
+
+	color: #161616;
+
+}
+
+.status-pipeline-dropdown {
+	position: relative;
+	top: 20px;
+    left: 20%;
+    width: 330px;
+	text-align: center;
+    background: #EEEEEE;
+    border-radius: 3px;
+
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+
+    color: #161616;
+    border:none;
+}
+
+.option{
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+
+    color: #161616;
+}
+
+
+select.status-pipeline-dropdown {
+    background-image:
+        linear-gradient(45deg, transparent 50%, black 50%),
+        linear-gradient(135deg, black 50%, transparent 50%);
+        
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+        background-repeat: no-repeat;
+        outline: 0;
+
+}
+  
+select.status-pipeline-dropdown:focus {
+    background-image:
+      linear-gradient(45deg, black 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, black 50%);
+    background-position:
+      calc(100% - 15px) 1em,
+      calc(100% - 20px) 1em,
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+
+    outline: 0;
+}
+
+select {  
+    /* reset */
+  
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+  }
+
+#status_filter {
+    height: 30px;
+    border-radius: 3px;
+}
+
+#filter {
+    cursor: pointer;
+}

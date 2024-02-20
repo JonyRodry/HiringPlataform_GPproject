@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hm.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hm_edit.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+<div class="content_page">
+    <form id="create-form" method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="row justify-content-between">
+            <h1 class="title">HIRING MANAGERS</h1>
+            <div class="button_profile_edit">
+                <button type="submit" id="update_hm" name="update_hm" value="update" class="button_profile-text btn btn-default">SAVE</button> 
+                <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+            </div>       
+        </div>
+        {% if user.admin.type == 0 %}
+        <div class="row justify-content-end">
+                <div class="button_profile_edit">
+                    <button type="submit" id="delete_hm" name="delete_hm" value="delete" class="button_profile-text btn btn-default">DELETE PROFILE</button> 
+                    <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+                </div>  
+        </div>
+        {% else %}
+        <div class="row justify-content-end" style="margin-top: 51px;"></div>
+        {% endif %}
+        <div class="row container_hm">
+            <div class="col-md-3 profile_details">
+                <img class="pic" src="{{hm_perfil.image.url}}" />
+                <button type="button" id="btnUpload" class="upload-button">UPLOAD IMAGE →</button>
+                <input type="file" name="image" accept="image/*" id="id_image" style="opacity:0%;display:none;">
+                <h2 class="profile_name">Hiring Manager</h2>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row params profile-params">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-6"><p><b>NAME</b></p></div>
+                            <div class="col-6"><p><b>PASSWORD</b></p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><p class="p inputs">{{form.name}}</p></div>
+                            <div class="col-6"><p class="p inputs">{{form.password}}</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row params profile-params">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-6"><p><b>EMAIL</b></p></p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><p class="p inputs" >{{form.email}}</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </form>
+    <script>  
+        var pass = document.getElementById("password");
+        var new_pass = '';
+        let btnUpload=document.getElementById("btnUpload");
+        let input=document.getElementById("id_image");
+
+        btnUpload.addEventListener('click', () => {
+            input.click();
+        })
+
+        for (let i = 0; i < pass.innerText.length; i++) {
+            new_pass = new_pass + '*';
+        }
+        
+        pass.innerText = new_pass;
+    </script>
+</div>
+{% endblock %}

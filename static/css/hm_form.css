@@ -1,0 +1,29 @@
+input#id_name {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_name:focus {
+    outline: none;
+}
+
+input#id_password {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_password:focus {
+    outline: none;
+}
+
+input#id_email {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_email:focus {
+    outline: none;
+}

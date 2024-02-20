@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hr.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/editHr.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+<div class="content_page">
+    <form method="post">
+    {% csrf_token %}
+        <div class="row justify-content-between">
+            <h1 class="title">HIRING MANAGER</h1>
+            <div class="button_profile_edit">
+                <button type="submit" name="hm_id" value="{{ id }}" class="button_profile-text btn btn-default">SAVE</button> 
+                <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+            </div>       
+        </div>
+        <div class="row container_hm">
+            <div class="col-md-3 profile_details">
+                <img class="pic" src="{% static 'img/image_test.png' %}" />
+                <h2 class="profile_name">HIRING MANAGER</h2>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row params profile-params">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-6"><p><b>USERNAME</b></p></div>
+                            <div class="col-6"><p><b>PASSWORD</b></p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><p class="p inputs">{{form.name}}</p></div>
+                            <div class="col-6"><p class="p inputs">{{form.password}}</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row params profile-params">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-6"><p><b>EMAIL</b></p></p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><p class="p inputs" >{{form.email}}</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </form>
+    <script>  
+        var pass = document.getElementById("password");
+        var new_pass = '';
+
+        for (let i = 0; i < pass.innerText.length; i++) {
+            new_pass = new_pass + '*';
+        }
+        
+        pass.innerText = new_pass;
+    </script>
+</div>
+{% endblock %}

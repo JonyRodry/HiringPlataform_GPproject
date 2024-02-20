@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hiring Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link
+        href='https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,500,600|IBM+Plex+Sans:200,300,400,500,600,700&display=swap'
+        rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/burguer.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-container row">
+        <div class="col-md-2 burguer-container">
+            <div class="burger">
+                <div class="dash" style="background-color:red"></div>
+                <div class="dash"></div>
+                <div class="dash"></div>
+                <div class="dash"></div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="row profile-container">
+                <div class="profile-content">
+                    <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+                    <p class=" username">Admin Admin</p>
+                    <img class="profile-pic" src="{% static 'img/profile.png' %}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% block content %} {% endblock %}
+    <div class="menu-container">
+        <div class="menu">
+            <div class="button">
+                <p class="button-text">MANAGE PROFILES</p> 
+                <img class="button-image" src="{% static 'img/arrow.svg' %}" />
+            </div>
+            <div class="button">
+                <p class="button-text">PIPELINE</p> 
+                <img class="button-image" src="{% static 'img/arrow.svg' %}" />
+            </div>
+        </div>
+        <div class="menu-name-enterprise">
+            <p class="name-enterprise">grama</p>
+            <p class="point-enterprise">.</p>
+        </div>
+    </div>
+</body>
+
+<script src="{% static 'js/menu.js' %}"></script>
+
+</html>

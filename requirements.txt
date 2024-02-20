@@ -1,0 +1,9 @@
+django
+psycopg2==2.9.2
+django-allauth
+django-filter
+pyrebase4
+firebase-admin
+django-storages[google]
+Pillow
+django-fernet-fields

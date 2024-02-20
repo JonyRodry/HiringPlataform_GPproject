@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset='UTF-8' />
+    <title>Log in - Hiring Platform</title>
+    <link rel="icon" href="{% static 'img/grama_logo.jpg' %}">
+    <link rel='stylesheet' href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <div class="split left">
+      <div class="centered">
+        <img src="{% static 'img/grama_logo.jpg' %}" alt="grama_logo">
+        <h2 id="HirPlat">Hiring Platform</h2>
+      </div>
+      <p id="grama">grama</p>
+    </div>
+    
+    <div class="split right">
+      <div class="left_centered">
+        <h2>Your username is {{ user.username }}.</h2>
+        <h2>Your email is {{user.email}}</h2>
+        {% if user.admin.type == 0 %}
+          <h2>You are an admin</h2>
+        {% endif %}
+        {% if user.hr.type == 1%}
+          <h2>You are a hr</h2>
+        {% endif %}
+        {% if user.hiringmanager.type == 2 %}
+          <h2>You are a hiringmanager</h2>
+        {% endif %}
+        
+        {{ request.session.name }}
+        <h2>Name</h2>
+        <p>{{ request.session.name }}</p>
+        <h2>Type</h2>
+        <p>{{ request.session.type }}</p>
+        <h2>id</h2>
+        <p>{{ request.session.id }}</p>
+        <h2>url</h2>
+        <p>{{ request.session.url }}</p>
+          
+        <h1 class="type_font">Home (Test for login)</h1>
+      </div>
+    </div>
+</body>
+
+</html>

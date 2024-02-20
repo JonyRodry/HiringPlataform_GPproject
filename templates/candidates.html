@@ -1,0 +1,252 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/listCandidates.css' %}">
+    
+</head>
+{% endblock css %}
+
+{% block content %}
+
+<script>
+    
+    function put_search_query(){
+        var search_query = "{{search_query}}";
+        document.getElementById("input_search").value = search_query;
+    }
+</script>
+
+<div id="list_container">
+    <div class="d-flex">
+        <div class="mr-auto p-2">
+            <h1 class="title_adminhr" style="margin-left: 1%;">CANDIDATES</h1>
+        </div>
+        <div class="p-1">
+            <div class="search-box">
+                <div class="deactivefilterMenu" id="filterMenu">
+                    <form method="get">
+                        <div class="invisible">
+                            {{list_filter.form.responsibleHR}}
+                            {{list_filter.form.responsibleHM}}
+                            {{list_filter.form.status}}
+                            {{list_filter.form.years_exp}}
+                        </div>
+                        <!--{% for field in list_filter.form %}
+                            <span class="labelInputPair">
+                                <div class="leftfloat">{{field.label}}</div>
+                                <div class="rightfloat">{{field}}</div> 
+                            </span>
+                        {% endfor %}
+                        {{list_filter.form }}-->
+                        <span class="labelInputPair"> 
+                            <div class="leftfloat">NAME:</div>
+                            <div class="rightfloat">{{list_filter.form.name__icontains}}</div> 
+                        </span>
+                        <span class="labelInputPair">
+                            <div class="leftfloat">TYPE:</div>
+                            <div class="rightfloat">{{list_filter.form.type}}</div> 
+                        </span>
+                        <span class="labelInputPair">
+                            <div class="leftfloat">EXPERIENCE LEVEL:</div>
+                            <div class="rightfloat">
+                                <select name="years_exp" id="years_exp">
+                                    <option value=""></option>
+                                    <option value="1">Entry-level</option>
+                                    <option value="2">Junior</option>
+                                    <option value="3">Mid</option>
+                                    <option value="4">Senior</option>
+                                </select>
+                            </div>
+                            <!--<div class="rightfloat">{{list_filter.form.years_exp}}</div>-->
+                        </span>
+                        <span class="labelInputPair">
+                            <div class="leftfloat">STATUS:</div>
+                            <div class="rightfloat">
+                                <select name="status" id="status">                                    
+                                    <!--Não tenho a certeza de quais as opções que devem estar aqui,
+                                         por isso ficam aqui as outras caso seja ao contrario -->
+                                    <!--<option value=""></option>
+                                    <option value="1">Lead</option>
+                                    <option value="2">Active</option>
+                                    <option value="3">On-hold</option>
+                                    <option value="4">Not interested</option>-->
+                                    <option value=""></option>
+                                    <option value="0">For future revision</option>
+                                    <option value="1">On-hold</option>
+                                    <option value="2">Dropped</option>
+                                    <option value="3">In process-Phone Interview</option>
+                                    <option value="4">In process-Interviewing</option>
+                                    <option value="5">In process-Proposal Sent</option>
+                                    <option value="6">Contracted</option>
+                                    <option value="7">Proposal Rejected</option>
+                                </select>
+                            </div> 
+                            <!--<div class="rightfloat">{{list_filter.form.status}}</div>-->
+                        </span>
+                        <span class="labelInputPair">
+                            <div class="leftfloat">CONTACT PERSON:</div>
+                            <div class="rightfloat">
+                                <select name="contact-person" id="contact-person" onchange="defineResponsibleType();">
+                                        <option value=""></option>
+                                    {% for cp in contact_person_list %}
+                                        <option>{{cp}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div> 
+                        </span>
+                        <span class="labelInputPair">
+                            <div class="leftfloat">     </div>
+                            <div class="rightfloat">
+                                <button class='button_profile addButton'>
+                                    <p class='button_profile-text'>ADD</p>
+                                    <img class='button_profile-image' src="{% static 'img/arrow_C79E0A.svg' %}" />
+                                </button>
+                            </div> 
+                        </span>
+                    </form>
+                </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button class="btn-search" name="btn-search" id="btn-search" value="btn-search"><i class="fa fa-search"></i></button>
+                    <input type="text" name = "query_search" id = "input_search" class="input-search" placeholder="Search">
+                    {% if search_query %}
+                        <script>
+                            put_search_query();
+                        </script>
+                    {% endif %}
+                    
+                </form>      
+            </div>
+        </div>
+        <div class="p-1">
+            <input class="filter" id="filter" type="image" src="{% static 'img/filter.svg' %}" />
+        </div>
+        
+    </div>
+    <form method="post" id="form-id">
+        {% csrf_token %}
+        <div class="row justify-content-between">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-1" style="margin-top:0.75%;">
+                        <p style="color:#C79E0A;">LIST</p>
+                    </div>
+                    <div class="col-1" style="margin-left: 5%;">
+                        <p class="custom-control custom-switch custom-switch-lg">
+                            <button type="submit" class="custom-control-input" name="checkbox" value="list" id="customSwitch7" ></button>
+                            <label class="custom-control-label font-italic" for="customSwitch7"></label>    
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% if request.session.type == 0 %}
+                <div class="button_profile_create">
+                    <div class="col-2" style="margin-left:30%;"><button type="submit" class="button_profile-text btn btn-default" name="create" value="create">CREATE</button></div>
+                    <div class="col-2" style="margin-left:35%;"><img class="button_profile-image" src="{% static 'img/arrow1.svg' %}"/></div>
+                </div>
+            {% endif %}
+        </div>
+    </form>
+
+
+
+      <div class="row" id="change">
+          {% for candidate in candidate_list %}
+              <div class='col-md-4 col-sm-6 col-6 person_background'>
+                  <img class='pic' src="{{candidate.image.url}}"/>
+                  <div class='fullName'>{{candidate.name}}</div>
+                  <div class='typeLabel'>Type</div>
+                  <div class='enterpriseLabel'>Enterprise</div>
+                  <div class='type'>{{candidate.type}}</div>
+                  <div class='enterprise'>{{candidate.enterprise}}</div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button id="bottom" type="submit" name="candidate_id" value="{{ candidate.id }}" class="button_profile">
+                            <p class="button_profile-text">PROFILE</p> 
+                            <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+                        </button>
+                    </form>
+              </div>      
+          {% endfor %}
+      </div>
+    </form>
+    
+    <script>
+        //page initialization
+        var filter = document.getElementById("filter");
+        var filterMenu = document.getElementById("filterMenu");
+        var change = document.getElementById("change");
+        var years_exp = document.getElementById("years_exp");
+        var status1 = document.getElementById("status");
+
+        var contact_person = document.getElementById("contact-person");
+        var form_responsibleHM = document.getElementById("id_responsibleHM");
+        var form_responsibleHR = document.getElementById("id_responsibleHR");
+        var form_status = document.getElementById("id_status");
+        var form_years_exp = document.getElementById("id_years_exp");
+
+        filter.addEventListener("click", function() {
+            if(filterMenu.classList.contains("activefilterMenu")){
+                filterMenu.classList.remove("activefilterMenu");
+                filterMenu.classList.add("deactivefilterMenu");
+            } else {
+                filterMenu.classList.add("activefilterMenu");
+                filterMenu.classList.remove("deactivefilterMenu");
+            }
+        });
+
+
+        status1.selectedIndex = parseInt(form_status.value)+1;
+
+        years_exp.selectedIndex = form_years_exp.value;
+
+        var goto_HR_options = true;
+        var cp_len = contact_person.options.length;
+        var HM_len = form_responsibleHM.options.length;
+        var opt_aux = form_responsibleHM.options[form_responsibleHM.selectedIndex].text
+        for ( var i = 0; i < HM_len; i++ ) {
+            if ( contact_person.options[i].text == opt_aux ) {
+                contact_person.selectedIndex = i;
+                goto_HR_options = false;
+                break;
+            }
+        }
+        if(goto_HR_options){
+            opt_aux = form_responsibleHR.options[form_responsibleHR.selectedIndex].text
+            for ( var i = HM_len; i < cp_len; i++ ) {
+                if ( contact_person.options[i].text == opt_aux ) {
+                    contact_person.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        //functions
+
+    
+        function defineResponsibleType(){
+            let opt = contact_person.options[contact_person.selectedIndex];
+            console.log( opt.text );
+            form_responsibleHM.selectedIndex = 0;
+            form_responsibleHR.selectedIndex = 0;
+
+            for ( var i = 0, len = form_responsibleHM.options.length; i < len; i++ ) {
+                if ( form_responsibleHM.options[i].text == opt.text ) {
+                    form_responsibleHM.selectedIndex = i;
+                    break;
+                }
+            }
+
+            for ( var i = 0, len = form_responsibleHR.options.length; i < len; i++ ) {
+                if ( form_responsibleHR.options[i].text == opt.text ) {
+                    form_responsibleHR.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+.title {
+	position: absolute;
+	top: 13%;
+	left: 5%;
+
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 32px;
+	line-height: 42px;
+
+	color: #161616;
+}
+
+.create-button {
+	position: absolute;
+	top: 14%;
+	right: 5%;
+
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	
+	color: #161616;
+
+	background: transparent;
+  	border: 0px solid transparent;
+}
+
+.info-container {
+	position: absolute;
+	width: 90%;
+	height: 45%;
+	left: 5%;
+	top: 25%;
+
+	background: #EEEEEE;
+	border-radius: 6px;
+}
+
+.profile-img {
+	margin-top: 5%;
+	margin-left: 9%;
+	width: 7%;
+	height: 35%;
+
+	float: left;
+}
+
+.upload-button {
+	position: absolute;
+	top: 59%;
+	left: 7%;
+
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	
+	color: #161616;
+
+	background: transparent;
+  	border: 0px solid transparent;
+}
+
+.create-form-1 {
+	position: absolute;
+	height: 100%;
+	width: 30%;
+	margin-left: 24%;
+
+	border-left: 3px solid #FFFFFF;
+	padding-left: 5%;
+	padding-top: 5%;
+}
+
+.create-form-2 {
+	position: absolute;
+	height: 100%;
+	width: 30%;
+	margin-left: 62%;
+
+	padding-top: 5%;
+}
+
+.label {
+	text-transform: uppercase;
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 21px;
+
+	color: #161616;
+}

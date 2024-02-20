@@ -1,0 +1,36 @@
+.burger {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 32px;
+	height: 22px;
+    margin-left: 12px;
+	cursor: pointer;
+}
+.burger .dash {
+	width: 32px;
+	height: 3px;
+	background: #C79E0A;
+	border-radius: 20px;
+	transition: 0.25s;
+}
+.burger .dash:nth-of-type(3) {
+	position: absolute;
+	top: calc(33px - 2.5px);
+}
+.activebrgr .dash:nth-of-type(1) {
+	opacity: 0;
+}
+.activebrgr .dash:nth-of-type(4) {
+	opacity: 0;
+}
+.activebrgr .dash:nth-of-type(3) {
+	transform: rotate(45deg);
+}
+.activebrgr .dash:nth-of-type(2) {
+	transform: rotate(-45deg);
+}
+
+.button {
+	cursor: pointer;
+}

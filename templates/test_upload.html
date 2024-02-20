@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+
+<div >
+    <form action="test_upload" method="post" enctype="multipart/form-data"  >
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    
+    {% for hm in hm_list %}
+            <div id="teste" class="col-md-4 col-sm-6 col-6 person_background">
+                <!--<img class="" src="{{ hr.img.url }}">-->
+                <img class="pic"  id="hr/{{ hm.id }}" src="{% static 'img/image_test.png' %}" />
+                <span class="p">{{hm.name}}</span>
+                <div id="bottom" class="button_profile">
+                    <p class="button_profile-text">PROFILE</p> 
+                    <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+                </div>
+            </div>
+        
+    {% endfor %}
+
+     <br>
+     <a href="{{download_url}}">{{file_list}}</a>       
+    
+   
+</div>
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script>
+    window.onload = function() {
+
+        setImages();
+    }
+     
+        
+    function setImages() {
+        var firebaseConfig = {
+            apiKey: "AIzaSyD78UNg9V-ga5jRJPVI9_pyxEBY_A6q-Vo",
+            authDomain: "gpgrama-hiringplatform.firebaseapp.com",
+            databaseURL: "https://gpgrama-hiringplatform-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "gpgrama-hiringplatform",
+            storageBucket: "gpgrama-hiringplatform.appspot.com",
+            messagingSenderId: "199232017935",
+            appId: "1:199232017935:web:f3a9abb950a63cbc51357a",
+            measurementId: "G-MQZX5C2RRX"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+  
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+
+
+        var icons = document.getElementsByClassName("pic");
+        var current_id;
+        for(var x = 0; x < icons.length; x++){
+            //console.log(icons[x].id)
+        
+            img_path = "images/"+ icons[x].id;
+            //var images = document.getElementsByTagName('img'); 
+            console.log(img_path)
+            current_id = icons[x].id;
+            storageRef.child(img_path).getDownloadURL().then(function(url) {
+                var img = document.getElementById(current_id);
+                img.src = url;
+                console.log(url)
+            }).catch(function(error) {
+            // Handle any errors
+                console.log(error)
+            });
+        }
+    }
+
+
+    function download_file(path){
+        var firebaseConfig = {
+            apiKey: "AIzaSyD78UNg9V-ga5jRJPVI9_pyxEBY_A6q-Vo",
+            authDomain: "gpgrama-hiringplatform.firebaseapp.com",
+            databaseURL: "https://gpgrama-hiringplatform-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "gpgrama-hiringplatform",
+            storageBucket: "gpgrama-hiringplatform.appspot.com",
+            messagingSenderId: "199232017935",
+            appId: "1:199232017935:web:f3a9abb950a63cbc51357a",
+            measurementId: "G-MQZX5C2RRX"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+  
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var httpsReference = storage.refFromURL('https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg');
+        storageRef.child(path).download()
+    }
+        
+        
+
+</script>
+
+{% endblock %}

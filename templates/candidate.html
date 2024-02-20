@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/candidate.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+    
+
+<div class="container-candidate list" id="list_container">
+    <script>
+        function resize(flag){
+            let status_div = document.querySelector(".div1");
+            let additional_div = document.querySelector(".div2");
+            console.log("status_div: " + status_div);
+            console.log("additional_div: " + additional_div);
+
+            //normal size
+            if (flag == 0){  
+                if (status_div.classList.contains("row_status_smaller")){
+                    status_div.classList.remove("row_status_smaller");
+                    if (additional_div.classList.contains("row_additional_bigger"))
+                        additional_div.classList.remove("row_additional_bigger");
+                }
+                status_div.classList.add("row_status");
+                additional_div.classList.add("row_additional_");
+            }   
+            
+            //status smaller
+            else{
+                if (status_div.classList.contains("row_status")){
+                    status_div.classList.remove("row_status");
+                    if (additional_div.classList.contains("row_additional_"))
+                        additional_div.classList.remove("row_additional_");
+                }
+                status_div.classList.add("row_status_smaller");
+                additional_div.classList.add("row_additional_bigger");
+            }
+        }
+    </script>
+    
+    <div class="row justify-content-between" style="padding-bottom: 40px;">
+        <h1>CANDIDATE</h1>
+       
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" value="Submit" class="button_profile_edit">
+                <p class="button_profile_edit-text">EDIT</p> 
+                <img class="button_profile_edit-image" src="{% static 'img/arrow2.svg' %}" />
+            </button>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="row person_background" style="height: 400px;">
+                <div class="col-12">
+                    <img class="pic" src="{{candidate_perfil.image.url}}" />
+                </div>
+                <div class="col-12">
+                    <h2 class="name_candidate">{{candidate_perfil.name}}</h2>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-5" style="padding-left: 35px;">
+                    <p class="p_bold">TYPE</p>
+                </div>
+                <div class="col-6" style="padding-left: 30px;">
+                    <p class="p_bold">ENTERPRISE</p>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-5" style="padding-left: 35px;">
+                    <p>{{candidate_perfil.type}}</p>
+                </div>
+                <div class="col-6" style="padding-left: 30px;">
+                    <p>{{candidate_perfil.enterprise}}</p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-12 person_bg" style="height: 300px;">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="p_bold">EMAIL</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="p_bold">CONTACT</p>
+                    </div>
+                </div>
+                <div class="row padding_row">
+                    <div class="col-6">
+                        <p><a href="mailto:{{candidate_perfil.email}}">{{candidate_perfil.email}}</a></p>
+                    </div>
+                    <div class="col-6">
+                        <p><a href="tel:{{candidate_perfil.phone_number}}">{{candidate_perfil.phone_number}}</a></p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-6">
+                        <p class="p_bold">LOCATION</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="p_bold">EXPERIENCE LEVEL</p>
+                    </div>
+                </div>
+
+                <div class="row padding_row">
+                    <div class="col-6">
+                        <p>{{candidate_perfil.location}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p>{{exp_level}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <p class="p_bold">LINKEDIN</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="p_bold">DOCUMENTS</p>
+                    </div>
+                </div>
+
+                <div class="row padding_row">
+                    <div class="col-6">
+                        <p><a href="{{candidate_perfil.linkedin}}">{{candidate_perfil.linkedin}}</a></p>
+                    </div>
+                    <div class="col-6">
+                        
+                        {% for file in file_list %}
+                            <a href="{{file.pdf.url}}" download>{{file.name}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <p class="p_bold">SOURCE</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6" >
+                        <p>{{candidate_perfil.source}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 person_bg1" style="height: 100px;">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="p_bold"> CONTACT PERSON</p>
+                    </div>
+                    
+                    <div class="col-6">
+                        <p class="p_bold"> LAST UPDATE</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-6">
+                        {% if candidate_perfil.responsibleHM %}
+                            <p>{{candidate_perfil.responsibleHM.name}} (HiringManager)</p>
+                        {% else %}
+                            <p>{{candidate_perfil.responsibleHR.name}} (HR)</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-6">
+                        <p>{{last_update}} - {{candidate_perfil.last_update_name}}</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 class_parent">
+            <div class="row row_status_comments">
+                <h3>STATUS</h3>
+            </div>
+            <div class="row div-status">
+                <div class="col-12">
+                    <p class="p_bold" style="text-transform: uppercase; text-align:center;">{{candidate_status}}</p>
+                </div>
+                {% if candidate_status == 'Active'  %}
+                    {% if candidate_perfil.pipeline_status == 0 or candidate_perfil.pipeline_status == 1 or candidate_perfil.pipeline_status == 2 or candidate_perfil.pipeline_status == 7 %}
+                        <div class="col-12">
+                            <p style="text-align:center;">{{pipeline_status}} </p>
+                        </div>
+                        <script>
+                            resize(1);
+                        </script>    
+                    {% elif candidate_perfil.pipeline_status == 3 or candidate_perfil.pipeline_status == 4 or candidate_perfil.pipeline_status == 5 or candidate_perfil.pipeline_status == 6 %}
+                        <div class="col-12">
+                            <p style="text-align:center;">{{pipeline_status}} </p>
+                        </div>  
+                        <div class="col-12">
+                            {% if candidate_perfil.pipeline_status == 3 %}
+                                <img class="img_progressbar" src="{% static 'img/progress_bar/0.25.svg' %}" />
+
+                            {% elif candidate_perfil.pipeline_status == 4 %}
+                                <img class="img_progressbar" src="{% static 'img/progress_bar/0.5.svg' %}" />
+
+                            {% elif candidate_perfil.pipeline_status == 5 %}
+                                <img class="img_progressbar" src="{% static 'img/progress_bar/0.75.svg' %}" />
+                            
+                            {% elif candidate_perfil.pipeline_status == 6 %}
+                                <img class="img_progressbar" src="{% static 'img/progress_bar/1.svg' %}" />
+
+                            {% endif %}
+                        </div>
+                        <script>
+                            resize(0);
+                        </script>   
+                    {% else %} 
+                        <div class="col-12">
+                            <p style="text-align:center;">Not Defined </p>
+                        </div>
+                        <script>
+                            resize(1);
+                        </script>   
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="col-8">
+            <div class="row row_status_comments" style="margin-left: 25px;">
+                <h3>COMMENTS</h3>
+            </div>
+            <div class="row row_comments" style="margin-left: 10px;">
+                {% if comments %}
+                    {% for name, comment in comments%}
+                        <div class="col-12 name_comment">
+                            <p>{{name}}</p>
+                        </div>
+                        <div class="col-12 space_comments">
+                            <h4>{{comment}}</h4>
+                        </div>
+                        <hr class="separate_comments">
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <p>No comments.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+{% endblock %}
+

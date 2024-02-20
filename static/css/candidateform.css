@@ -1,0 +1,452 @@
+.title {
+  position: absolute;
+  top: 12%;
+  left: 5%;
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 42px;
+  color: #161616;
+}
+
+.create-button {
+  position: absolute;
+  top: 14%;
+  right: 5%;
+
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  color: #161616;
+
+  background: transparent;
+  border: 0px solid transparent;
+}
+
+.profile-img {
+  margin-top: 5%;
+  margin-left: 10%;
+  width: 8%;
+  height: 30%;
+
+  float: left;
+}
+
+.info-container {
+  position: absolute;
+  width: 90%;
+  height: 60%;
+  left: 5%;
+  top: 24%;
+
+  background: #eeeeee;
+  border-radius: 6px;
+}
+
+.upload-button {
+  position: absolute;
+  top: 50%;
+  left: 8.5%;
+
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  color: #161616;
+
+  background: transparent;
+  border: 0px solid transparent;
+}
+
+.name-container {
+  position: absolute;
+  top: 60%;
+  left: 6%;
+  width: 20%;
+}
+
+.type-enterprise-container {
+  position: absolute;
+  width: 20%;
+  top: 75%;
+  left: 5%;
+
+  column-count: 2;
+}
+
+.create-form-1 {
+  position: absolute;
+  height: 75%;
+  width: 30%;
+  margin-left: 27%;
+
+  border-left: 3px solid #ffffff;
+  padding-left: 5%;
+  padding-top: 2%;
+}
+
+.create-form-2 {
+  position: absolute;
+  height: 70%;
+  width: 28%;
+  margin-left: 62%;
+
+  padding-top: 2%;
+}
+
+.label {
+  text-transform: uppercase;
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 21px;
+  margin-right: 10px;
+
+  color: #161616;
+}
+
+.input-field {
+  position: relative;
+  border-style: none;
+  border-bottom: 2px solid #adadad;
+  font-size: 100%;
+  color: #555;
+  line-height: 0;
+  display: block;
+  width: 40%;
+
+  background: 0 0;
+
+  margin-bottom: 2%;
+}
+
+.input-field-1 {
+  position: relative;
+  border-style: none;
+  border-bottom: 2px solid #adadad;
+  font-size: 100%;
+  color: #555;
+  line-height: 0;
+  display: block;
+  width: 80%;
+  background: 0 0;
+  margin-bottom: 2%;
+}
+
+.documents-img {
+  width: 5%;
+  height: 5%;
+
+  margin-left: 1%;
+}
+
+.documents-img:hover {
+  width: 5%;
+  height: 5%;
+  cursor: pointer;
+}
+
+.contact-person-container {
+  position: absolute;
+  left: 27%;
+  top: 75%;
+  height: 30%;
+  width: 55%;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  padding-top: 2%;
+  padding-left: 5%;
+}
+
+.hiring-manager-container {
+  position: absolute;
+  left: 62%;
+  top: 75%;
+  height: 30%;
+  width: 55%;
+  border-top: 3px solid #ffffff;
+  padding-top: 2%;
+}
+
+.status-label {
+  position: absolute;
+  left: 6%;
+  top: 88%;
+
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 27px;
+
+  color: #161616;
+}
+
+.status-container {
+  position: absolute;
+  width: 30%;
+  height: 20%;
+  left: 5%;
+  top: 93%;
+
+  background: #eeeeee;
+  border-radius: 6px;
+}
+
+#status-text {
+  position: relative;
+  top: 30%;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 21px;
+  color: #161616;
+}
+
+.status-dropdown {
+  position: relative;
+  top: 30%;
+  text-align: center;
+}
+
+.change-status-button {
+  position: absolute;
+  top: 60%;
+  left: 32%;
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  color: #161616;
+
+  background: transparent;
+  border: 0px solid transparent;
+}
+
+.comments-label {
+  position: absolute;
+  left: 38%;
+  top: 88%;
+
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 27px;
+
+  color: #161616;
+}
+
+.comments-container {
+  position: absolute;
+  width: 58%;
+  height: 20%;
+  left: 37%;
+  top: 93%;
+
+  background: #eeeeee;
+  border-radius: 6px;
+}
+
+.comments {
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 17px;
+
+  margin: 2%;
+
+  border-style: none;
+  font-size: 100%;
+  color: #000000;
+  line-height: 0;
+  display: block;
+  width: 80%;
+
+  background: 0 0;
+}
+
+#contact-person-popup {
+  position: absolute;
+  width: 560px;
+  height: 201px;
+  left: 30%;
+  top: 42%;
+
+  background: #ffffff;
+  border-radius: 6px;
+
+  display: none;
+}
+
+#hiring-manager-popup {
+  position: absolute;
+  width: 560px;
+  height: 201px;
+  left: 30%;
+  top: 42%;
+
+  background: #ffffff;
+  border-radius: 6px;
+
+  display: none;
+}
+
+#contact-person-dropdown.btn.btn-secondary.btn-sm.dropdown-toggle {
+  position: relative;
+  top: 28%;
+  left: 25%;
+
+  margin-bottom: 5%;
+  width: 50%;
+  background-color: #eeeeee;
+  color: black;
+  border-style: none;
+}
+
+.popup-title-label {
+  position: relative;
+  top: 4%;
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 27px;
+
+  color: #161616;
+
+  text-align: center;
+}
+
+.save-button {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  color: #161616;
+
+  background: transparent;
+  border: 0px solid transparent;
+}
+
+#change-status-popup {
+  position: absolute;
+  width: 560px;
+  height: 201px;
+  left: 30%;
+  top: 42%;
+
+  background: #ffffff;
+  border-radius: 6px;
+
+  display: none;
+}
+
+.status-dropdown {
+  position: relative;
+  top: 15%;
+  text-align: center;
+}
+
+.pipeline-status-dropdown {
+  position: relative;
+  top: 30%;
+  text-align: center;
+}
+
+.popup-dropdown {
+  position: relative;
+  top: 28%;
+  text-align: center;
+}
+
+.btn,
+.btn-secondary,
+.btn-sm,
+.dropdown-toggle,
+.btn:hover,
+.btn-secondary:hover,
+.btn-sm:hover,
+.dropdown-toggle:hover {
+  background-color: #eeeeee;
+  color: black;
+  border-style: none;
+}
+
+.invisible {
+  display: none;
+}
+
+.errorlist {
+  padding-left: 5%;
+  margin-top: 2%;
+  color: red;
+}
+
+.error {
+	font-size: 10px;
+	margin-bottom: 8%;
+}
+
+.upload-button-candidate {
+	margin-top: 40px;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #161616;
+    background: transparent;
+    border: 0px solid transparent;
+}
+
+.input_name_candidate {
+	display: flex; 
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.input_comments_create_candidate {
+    display: flex;
+    align-items: start;
+    padding-top: 0px !important;
+}
+
+.change-status-button {
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	
+	color: #161616;
+
+	background: transparent;
+  	border: 0px solid transparent;
+}
+	
+.row_status_smaller {
+    padding-top: 0px !important;
+}
+
+.label_status {
+  float: left !important;
+}

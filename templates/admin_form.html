@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_form.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+<div class="content_page">
+    <form id="create-form" method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row justify-content-between">
+        <h1 class="title">ADMIN</h1>
+        <div class="button_profile_edit">
+            <button type="submit" class="save btn btn-default">SAVE</button>
+            <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+        </div>       
+    </div>
+    <div class="row container_admin">
+        <div class="col-md-3 profile_details">
+            <img class="pic" src="{{admin.image.url}}" />
+            <h2 class="profile_name">ADMIN</h2>
+            <button type="button" id="btnUpload" class="upload-button btn btn-default">UPLOAD IMAGE →</button>
+			<input type="file" name="image" accept="image/*" id="id_image" style="opacity:0%;display:none;">
+
+        </div>
+        <div class="col-md-9">
+            <div class="row params profile-params">
+                <div class="col-md-12">
+                    <div class="row">
+                        <p><b>PASSWORD</b></p>
+                    </div>
+                    <div class="row">
+                        <p class="teste">{{ form.password }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btnUpload=document.getElementById("btnUpload");
+        let input=document.getElementById("id_image");
+
+        btnUpload.addEventListener('click', () => {
+                input.click();
+        })
+
+    </script>
+    </form>
+</div>
+{% endblock %}

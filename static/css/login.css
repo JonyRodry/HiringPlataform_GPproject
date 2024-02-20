@@ -1,0 +1,115 @@
+* {
+  font-family: IBM Plex Mono; 
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+    left: 0;
+    background-color: #111;
+    color: #c39c0a;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#HirPlat {
+    font-weight: 400 !important;
+}
+
+#title_login {
+    padding: 0px !important;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+    width: 90%;
+    border-radius: 10%;
+}
+
+#grama{
+    position: fixed;
+    bottom: 5px;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.grama_point {
+    color: #969696;
+}
+
+/* Control the right side */
+.right {
+    right: 0;
+    background-color: white;
+}
+
+.left_centered {
+    position: absolute;
+    top: 38%;
+    left: 25%;
+    right: 25%;
+}
+
+.type_font{
+    font-family: IBM Plex Mono;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+input:nth-child(3) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input{
+    position: relative;
+    border-style: none;
+    border-bottom: 2px solid #adadad;
+    font-size: 100%;
+    color: #555;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    height: 45px;
+    background: 0 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+.signin_btn{
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    background: linear-gradient(90deg, white 55%, #969696 45%);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transform: translate(0%, 150%);
+}
+
+#messages {
+    top: 5%;
+}

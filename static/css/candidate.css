@@ -1,0 +1,155 @@
+.container-candidate {
+    padding: 0px 86px;
+    padding-top: 37px;
+    margin: 0px;
+}
+
+.title_candidate{
+    margin-left: 10px;
+}
+
+.button_profile_edit {
+    display: flex;
+    height: 51px;
+    align-items: center;
+}
+
+
+.button_profile_edit-text {
+    color: #000000;
+    width: fit-content;
+    margin: 0px 12px !important;
+}
+
+.button_profile_edit-image {
+    height: 10px;
+}
+
+
+.pic{
+    object-fit: cover;
+    width: 170px;
+    height: 170px;    
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+}
+
+.name_candidate{
+    text-align:center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.p_bold{
+    font-weight: bold;
+}
+
+.padding_row{
+    padding-bottom: 25px;
+}
+
+.person_background{
+    background-color: #EEEEEE;
+    box-sizing: border-box;
+    border-right: 2px solid transparent;
+    background-clip: padding-box;
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    border-radius: 6px !important;
+}
+
+.person_bg{
+    background-color: #EEEEEE;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+    background-clip: padding-box;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    border-top-right-radius: 6px;
+}
+
+.person_bg1{
+    background-color: #EEEEEE;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    border-bottom-right-radius: 6px;
+}
+
+.row_status_comments{
+    margin-top: 50px;
+    margin-left: 1px;
+}
+
+.row_status{
+    background-color: #EEEEEE;
+    padding-top: 20px;
+    border-radius: 6px;
+    height: 180px;
+}
+
+.row_status_smaller{
+    background-color: #EEEEEE;
+    padding-top: 20px;
+    border-radius: 6px;
+    height: 120px;
+}
+
+
+.row_comments{
+    background-color: #EEEEEE;
+    padding-top: 20px;
+    border-radius: 6px;
+    height: 180px;
+    margin-bottom: 100px;
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+.img_progressbar{
+    margin: auto;
+    display: block;
+}
+
+.space_comments{
+    margin-left: 10px;
+}
+
+.name_comment{
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.separate_comments{
+  border: 1px solid white;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    color: black;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.div-status {
+    min-height: 150px;
+    background-color: #EEEEEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

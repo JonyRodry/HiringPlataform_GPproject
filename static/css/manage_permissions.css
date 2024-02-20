@@ -1,0 +1,35 @@
+.content_page {
+    height: calc(100vh - 64px) !important;
+    padding: 0px 71px;
+    padding-top: 37px;
+    margin: 0px;
+    margin-right:3%;
+}
+
+.button_manage {
+    display: flex;
+    height: 51px;
+    align-items: center;
+}
+
+.button-text_manage {
+    color: #C79E0A;
+    width: fit-content;
+    margin: 0px 12px !important;
+}
+  
+.button-image_manage {
+    height: 12px;
+}
+
+.manage_bg{
+    background-color: #EEEEEE;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    background-clip: padding-box;
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 1px;
+}

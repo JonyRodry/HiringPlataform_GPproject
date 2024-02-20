@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gpgrama-hiringplatform",
+  "private_key_id": "d9c8eb69ef8f641079f0e95e18510df19215c89f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCGJHMMynqBxHoi\nkZizSx5dIWQitIsC7sOAwfhEXX8LovdDtYIZaYDPaCdyMtQ7ES30pPULj9qdnhsy\n0A3eS7Am33eKJF9ocDD7LweZUEDOkWvqB2NeoeLpbDux5fkvJhgB/vQPHnlCuurI\npfj6AMDmX0tNVeiUxjBmm5XRrvLF1vBsaECwcsDeVz4eXAM4lKbV8qF3YB+nfBjg\nC1O9SfUp9X9Z5aB2cXgH83wdrbbW8xStZ4HdvFXwUOnXQ5QqBF3Yo/7rfa6ZjhRQ\nqVfhwODFq9nBt5WsmoVHyrUSNnX/7QBGu8W6dLCccIuENzbgrVlQvP3gThgQ01kO\nYj+GGXbZAgMBAAECggEAANMqjfKUzEV8Bshkav3UQvhYmEoJ7MuxEhKfRzRX+qdW\n4+iy0xst+piGXZJocbCKWs3E3/xTeNKnEinrW+mVPLf1ETlmCMtf0buZTV0L+Pk1\n86t19fgC4DKVL2Pdo2eVkDWUJJ+oWTuzA+bZYBgvF3uQh/o2QuvxEkB0rGRqA8Nr\nUYdilmcE0/DZs+YhQrqBGCwTkd18c1lT4ZKEpaOqsxoEDsPzawf8NByxLUwGwIUH\n+OMdCzBa97ApJrYs9HNUrZeK5wa1jU8PwpWpfSYkUIffyTknJgjHWSxecBieSP9Z\n451kzB3a+KqVdqWZLKLHIDazidwTb6pE50WO57snLQKBgQC8kaDOB7uqms4WHkm0\nFgqLqvNzsL1/NQNtkFWTI9sLP7ZB6TubKok7ANJSqQPo0T8H2Gx8AD7/5E+ifahm\nrcmNtpeb1LfjxtEWwgyTwrOv3fmgwA8l0+iG6q68skaBjL+1qdeAQGhRGTCGP+hS\nsQMnyIQBZkiakqCqCJ8f//CciwKBgQC2HGWMNBT0nzbNUh+MNRxSo5VCI/q5U3xV\nnjm99VfUdtCbmAsYXXAHmzSrr5xvBnnuZH1KR1IKbR1UxWN9IJMHcpVIrtc2KqVx\nZQ3Kl/scJnbxzFZBWvb9wkqW42U7NIUGqg1Mxn9LfS4myasdNWmNAu7SMdl4k1kS\naTNyjmFyqwKBgQCmTHQZXz6FHdMkNH/hfxK7y/66B6OG/PTR+llN03BJAl400IEN\nvbyauYXC+mWFPIwu2hIKZZkpyWrlrZYHP7qh7ObVugqWqW8ad/Xplesr7UJKHzb8\nsF7AJVYG+d4uQDeN+YQhCiw1YVam/tNfodZbjn3EUjUzhJ6GdeYHrYrAMwKBgFpf\njzlbo0aeOGj+Jy/CL5MHIQwYpNURjDNE+Sy+s155tB5y/paR0AXGTQYieQRT93CJ\np++TozAPZC3sYun2n2BjyZevRJfZ5A548rYmY/RdVku6dteqF8Zog/GLWXJfJuDe\nxQjjvMoujhernuI43m+fE/t1x5FhtiM/18syw0NPAoGAEmOXBcTxv8sv11Yqp5jO\nlXAaNKUXufcuoO/tAmOyMyxKMurEyu2BEuEHZTYonWlqeD0v5kA/quZnkymwErfo\n1n7gLaItCIZRKF9wrykNXBOAfZozHs7mMWU5s6Wt9vLxGTIHGJDshVrCt+k/BXcy\nEykAXiYXmeGpPc4qOBwNp1g=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-vql5q@gpgrama-hiringplatform.iam.gserviceaccount.com",
+  "client_id": "106817999060855646507",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-vql5q%40gpgrama-hiringplatform.iam.gserviceaccount.com"
+}

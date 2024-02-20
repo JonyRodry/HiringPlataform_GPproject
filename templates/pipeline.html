@@ -1,0 +1,350 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pipeline.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+<style>
+    .filter{
+        position: absolute;
+        top: 25%;
+        margin-left: 5%;
+    }
+
+    #filterMenu{
+        position: absolute;
+        top: 50px;
+        right: -40px;
+        width: 120%;
+        background-color: black;
+        color: #C79E0A;
+        padding: 3px;
+        border-radius: 5px;
+    }
+
+        .activefilterMenu {
+            opacity: 1;
+            z-index: 1;
+            pointer-events: all;
+        }
+
+        .deactivefilterMenu {
+            opacity: 0;
+            z-index: -1;
+            pointer-events:  none;
+        }
+
+    .labelInputPair{
+        display: block;
+        margin-top: 5%;
+        margin-left:2%;
+        margin-right:2%;
+    }
+
+        .leftfloat{
+            width: 40%;
+            float: left;
+        }
+        
+        .rightfloat{
+            width: 60%;
+            float: right;
+        }
+
+</style>
+<div class="content_page">
+    <script>
+        function select_filter(){
+            var option = "{{status_filtered}}";
+            let select = document.querySelector("#status_filter");
+            console.log(select);
+            select.value = option;
+        }
+        function put_comments_filtered(){
+            var comments_query = "{{comments_filtered}}";
+            document.getElementById("filter_search").value = comments_query;
+        }
+
+        function put_search_query(){
+            var search_query = "{{search_query}}";
+            document.getElementById("input_search").value = search_query;
+        }
+    
+        
+    </script>
+
+    <form method="post" id="form-id" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-content-between">
+            <h1 class="title_adminhr" style="margin-left: 1%;">PIPELINE</h1>
+            <div class="search-box" style="margin-right:2%;">
+                <div class="deactivefilterMenu" id="filterMenu">
+                    <span class="labelInputPair">
+                        <label id="description" for="status" class="leftfloat" style="margin-top: 2%;">Status:</label>
+                        <!--<input type="text" name="status" id="filter_search" class="input-search rightfloat" >-->
+                        <select class="status-filter-dropdown rightfloat" name="status_filter" id="status_filter">
+                            <option class="option" value="0">----</option>
+                            <option class="option" value="1">For future revision</option>
+                            <option class="option" value="2">On-hold</option>
+                            <option class="option" value="3">Dropped</option>
+                            <option class="option" value="4">In process - Phone Interview</option>
+                            <option class="option" value="5">In process - Interviewing</option>
+                            <option class="option" value="6">In process - Proposal Sent</option>
+                            <option class="option" value="7">Contracted</option>
+                            <option class="option" value="8">Proposal Rejected</option>
+                            {% if status_filtered %}
+                                <script>
+                                    select_filter();
+                                </script>                        
+                            {% endif %}
+                        </select>
+                    </span>
+                    <span class="labelInputPair">
+                        <label id="description" for="comment" class="leftfloat" style="margin-top: 2%;">Comments:</label>
+                        <input type="text" name="comments" id="filter_search" class="input-search rightfloat">
+                        {% if comments_filtered %}
+                            <script>
+                                put_comments_filtered();
+                            </script>
+                        {% endif %}
+                    </span>
+                    <div id="bottom"  class='button_profile leftfloat'>
+                        <button type="submit" class='button_profile-add btn btn-default' name="add_filters" id="add_filters" value="add_filters" style="margin-left: 90%;">ADD</button>                   
+                        <img class='button_profile-image' style="margin-left: 2%;" src="{% static 'img/arrow1.svg' %}" />
+                    </div>
+                </div>
+                <button class="btn-search" name="btn-search" id="btn-search" value="btn-search"><i class="fa fa-search"></i></button>
+                <input type="text" name = "query_search" id = "input_search" class="input-search" onkeyup="search();" placeholder="Search">
+                {% if search_query %}
+                    <script>
+                        put_search_query();
+                    </script>
+                {% endif %}
+                <img class="filter" id="filter" type="image" src="{% static 'img/filter.svg' %}" />
+            </div>
+        </div>
+        
+        <div class="row justify-content-between">
+            <div class="col-md-5" style="margin-top:0.5%;">
+                <div class="row">
+                    <div class="col-1" style="margin-top:0.75%;"><p style="color:#C79E0A;">LIST</p></div>
+                    <div class="col-1" style="margin-left: 5%;">
+
+                        <p class="custom-control custom-switch custom-switch-lg">
+                            <button type="submit" class="custom-control-input" name="checkbox" value="list" id="customSwitch7" ></button>
+                            <label class="custom-control-label font-italic" for="customSwitch7"></label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button_profile_create">
+                {% if request.session.type == 0 %}
+                <div class="col-2" style="margin-left:30%;"><button type="submit" class="button_profile-text btn btn-default" name="create" value="create">CREATE</button></div>
+                <div class="col-2" style="margin-left:35%;"><img class="button_profile-image" src="{% static 'img/arrow1.svg' %}"/></div>
+                {% endif %}
+            </div>
+            
+        </div>
+
+        <div class="row justify-content-between" style="margin-left: 0%;">
+            <div class="col-sm-12 ">
+                <div class="row ">
+                    <div class="col-2 container_header border-right"><p class="text" >NAME</p></div>
+                    <div class="col-2 container_header border-right"><p class="text">TYPE</p></div>
+                    <div class="col-2 container_header border-right "><p class="text">SOURCE</p></div>
+                    <div class="col-2 container_header border-right "><p class="text">STATUS</p></div>
+                    <div class="col-3 container_header border-right "><p class="text" >COMMENTS</p></div>
+                    <div class="col-1 container_header "><p class="text">FILES</p></div>
+                </div>
+            </div>
+        </div>
+        {% if list_of_list %}
+            <div class="row justify-content-between " style="margin-left: 0%;height: 35px;background-color:#C4C4C4;"></div>
+            {% for candidate,files in list_of_list %}
+                <div class="row justify-content-between"  style="margin-left: 0%;">
+                    <div class="col-sm-12 ">
+                        <div class="row ">
+                            <div class="col-2 container_candidate border-right">
+                                <img class="pic_candidate"  src="{{candidate.image.url}}" style="width: 50px;height: 50px; object-fit: cover; border-radius: 50%; margin-right:10%;"/>
+                                <p class="text_candidate" >{{candidate.name}}</p>
+                            </div>
+                            <div class="col-2 container_candidate border-right"><p class="text_candidate">{{candidate.type}}</p></div>
+                            <div class="col-2 container_candidate border-right "><p class="text_candidate">{{candidate.source}}</p></div>
+                            <div class="col-2 container_changes border-right ">
+                                    {% if candidate.pipeline_status == 0 %}
+                                    <p class="text_candidate status_pipeline">For future revision</p>
+                                    {% elif candidate.pipeline_status == 1 %}
+                                        <p class="text_candidate status_pipeline">On-hold</p>
+                                    {% elif candidate.pipeline_status == 2 %}
+                                        <p class="text_candidate status_pipeline">Dropped</p>
+                                    {% elif candidate.pipeline_status == 3 %}
+                                        <p class="text_candidate status_pipeline">In process - phone interview</p>
+                                    {% elif candidate.pipeline_status == 4 %}
+                                        <p class="text_candidate status_pipeline">In process - interviewing</p>
+                                    {% elif candidate.pipeline_status == 5 %}
+                                        <p class="text_candidate status_pipeline">In process - proposal sent</p>
+                                    {% elif candidate.pipeline_status == 6 %}
+                                        <p class="text_candidate status_pipeline">Contracted</p>
+                                    {% elif candidate.pipeline_status == 7 %}
+                                        <p class="text_candidate status_pipeline">Proposal rejected</p>
+                                    {% endif %}
+                                    <button type="button" id="change-status-button" class="button_profile-candidate btn btn-default text_button change_button" onclick="open_status_popup('{{ candidate.id }}', '{{ candidate.pipeline_status }}')" name="change">Change →</button> 
+
+                            </div>
+                            <div class="col-3 container_changes border-right "  > 
+                                    <p class="text_candidate text_comments comment" style="width: 90%;">{{candidate.pipeline_comments}}</p>
+                                    <button type="button" id="add-comment-button" class='button_profile-candidate btn btn-default text_button change_button' name="add"  onclick="open_comments_popup('{{ candidate.id }}')">ADD →</button>  
+                            </div>
+                            <div class="col-1" >
+                                <div class="row container_divided">
+                                        <div class="col">
+                                            {% for file in files %}
+                                                <a href="{{file.pdf.url}}" class="text_candidate " style="margin-left:15%;text-decoration-line: underline;" download>{{file.name}}</a>
+                                            {% endfor %}
+                                        </div>
+                                        <input type="file" id="upload" name="{{ candidate.id }}" accept=".doc, .docx, .pdf, .txt" style="opacity:0%;display:none;">
+                                        <button type="button" id="btnUpload" value="{{ candidate.id }}" class='button_profile-candidate btn btn-default upload_button' ><img src="{% static 'img/upload.svg' %}"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row justify-content-between " style="margin-left: 0%;height: 20px;background-color:#C4C4C4;"></div>
+            {% endfor %}
+               
+            {% if size_list == 5 %}
+            <div class="row justify-content-between " style="margin-left: 0%;height: 70px;background-color:#C4C4C4;"></div>
+            {% elif size_list == 4 %}
+            <div class="row justify-content-between " style="margin-left: 0%;height: 190px;background-color:#C4C4C4;"></div>
+            {% elif size_list == 3 %}
+            <div class="row justify-content-between " style="margin-left: 0%;height: 310px;background-color:#C4C4C4;"></div>
+            {% elif size_list == 2 %}
+            <div class="row justify-content-between " style="margin-left: 0%;height: 430px;background-color:#C4C4C4;"></div>
+            {% elif size_list == 1 %}
+            <div class="row justify-content-between " style="margin-left: 0%;height: 550px;background-color:#C4C4C4;"></div>
+            {% elif size_list == 0 %}
+            <div class="row justify-content-between " style="margin-left: 0%;height: 670px;background-color:#C4C4C4;"></div>
+            {% endif %}
+           
+            <div id = "add-comment-popup">
+                
+                <div class="row center">
+                    <p class="popup-title-label">ADD COMMENT</p>
+                </div>
+                <div class="row center2" center>
+                    <textarea id="write-comment" rows="20" cols="100" name="comment" form="form-id"></textarea>
+                </div>
+                <div class="row center3">
+                    <button type="submit" value="value" name="submit_comment" id="submit_comment" class="button_profile-candidate btn btn-default" style="font-weight: bold;">SAVE →</button>
+                </div>
+                
+            </div>
+            
+            <div id="change-status-popup">
+                <div class="row center4" >
+                    <p class="popup-title-label">UPDATE STATUS</p>
+                </div>
+                <div class="row" style="margin-top:7%;">
+                    <label class="popup-label" for="phase">PHASE:</label>
+                        <select class="status-pipeline-dropdown" name="status_pipeline" id="status_pipeline">
+                            <option class="option" value="0">For future revision</option>
+                            <option class="option" value="1">On-hold</option>
+                            <option class="option" value="2">Dropped</option>
+                            <option class="option" value="3">In process - Phone Interview</option>
+                            <option class="option" value="4">In process - Interviewing</option>
+                            <option class="option" value="5">In process - Proposal Sent</option>
+                            <option class="option" value="6">Contracted</option>
+                            <option class="option" value="7">Proposal Rejected</option>
+                        </select>
+                </div>
+                <div class="row center5">
+                        <button type="submit" value="value" name="submit_status" id="submit_status" class="button_profile-candidate btn btn-default" style="font-weight: bold;" >SAVE →</button>
+                </div>
+            </div>
+        {% endif %}
+        <script>
+            let filter = document.getElementById("filter");
+            let filterMenu = document.getElementById("filterMenu");
+            let form = document.getElementById("form-id");
+            let btnUpload=document.getElementById("btnUpload");
+
+            let upload =document.getElementById("upload");
+
+            const inputs =document.querySelectorAll('input[id^=upload]');
+
+            const btns = document.querySelectorAll('button[id^=btnUpload]');
+
+            var add_comment_popup = document.getElementById("add-comment-popup");
+
+            var button_comment =  document.getElementById("submit_comment");
+
+            var change_status_popup = document.getElementById("change-status-popup");
+
+            var button_status = document.getElementById("submit_status");
+
+            var select_pipeline_status = document.getElementById("status_pipeline");
+
+            btns.forEach(btn => {
+
+                btn.addEventListener('click', () => {
+                    inputs.forEach(input => {
+                        if(btn.value == input.name){
+                            input.click();
+                        }
+                    });
+                })
+
+            });
+
+            inputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    form.submit();
+                })
+
+            });
+
+
+            filter.addEventListener("click", function() {
+                if(filterMenu.classList.contains("activefilterMenu")){
+                    filterMenu.classList.remove("activefilterMenu");
+                    filterMenu.classList.add("deactivefilterMenu");
+                }
+                else {
+                    filterMenu.classList.add("activefilterMenu");
+                    filterMenu.classList.remove("deactivefilterMenu");
+                }
+            });
+
+
+            function open_comments_popup(id){
+                add_comment_popup.style.display = 'flex';
+                button_comment.value = id
+            }
+
+            function open_status_popup(id,pipeline_status) {
+
+                select_pipeline_status.selectedIndex =pipeline_status;
+
+                change_status_popup.style.display = 'block';
+                button_status.value = id;
+            }
+
+            document.onclick = function(e) {
+                if(e.target.id !== 'add-comment-popup' && e.target.id !== 'add-comment-button' && !add_comment_popup.contains(e.target)) {
+                    add_comment_popup.style.display = 'none';
+                }
+                if(e.target.id !== 'change-status-popup' && e.target.id !== 'change-status-button' && !change_status_popup.contains(e.target)) {
+                    change_status_popup.style.display = 'none';
+                }
+            };
+        </script>
+    </form>
+</div>
+
+{% endblock %}

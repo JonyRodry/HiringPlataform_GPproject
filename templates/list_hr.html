@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+    
+<script>
+    function put_search_query(){
+        var search_query = "{{search_query}}";
+        document.getElementById("input_search").value = search_query;
+    }
+</script>
+
+<div class="list" id="list_container">
+    <div class="row justify-content-between">
+        <h1 class="title_hrhm">HUMAN RESOURCES</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="search-box">
+                <button class="btn-search" name="btn-search" id="btn-search" value="btn-search"><i class="fa fa-search"></i></button>
+                <input type="text"  name = "query_search" id = "input_search" class="input-search" placeholder="Search">
+                {% if search_query %}
+                <script>
+                    put_search_query();
+                </script>
+            {% endif %}
+            </div>
+        </form>
+    </div>
+    {% if request.session.type == 0 %}
+        <div class="row justify-content-end">
+            <form method="post">
+                {% csrf_token %}
+                <button id="create_hr" name="create_hr"  value="create" class="button_profile_create">
+                    <p class="button_profile-text">CREATE</p> 
+                    <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+                </button>
+            </form>
+        </div>
+    {% else %}
+        <div class="row justify-content-end" style="margin-top: 50px;"></div>
+    {% endif %}
+    <div class="row" id="change">
+        {% for hr in hr_list %}
+            <div class="col-md-4 col-sm-6 col-6 person_background"> 
+                <!--<img class="" src="{{ hr.img.url }}">-->
+                <img class="pic" src="{{hr.image.url}}" />
+                <span class="p">{{hr.name}}</span>
+                <form method="post">
+                    {% csrf_token %}
+                    <button id="bottom" name="bottom" type="submit" value="{{hr.id}}" class="button_profile">
+                        <p class="button_profile-text">PROFILE</p> 
+                        <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+                    </button>
+                </form>
+            </div>
+        
+        {% endfor %}
+    </div>
+    <script>
+        function search(){
+            var elemento = document.getElementById("change");
+        
+            elemento.innerHTML = "";
+            list_name = []
+            "{% for hr in hr_list %}"  
+                list_name.push("{{ hr.name }}")
+            "{% endfor %}"
+        
+            var input, filter, i;
+            input = document.getElementById('input_search');
+            
+            filter = input.value.toUpperCase()
+            
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < list_name.length; i++) {
+                if (list_name[i].toUpperCase().indexOf(filter) > -1) {
+                    elemento.innerHTML =  elemento.innerHTML  + "<div class='col-md-4 col-sm-6 col-6 person_background'><img class='pic' src='{% static 'img/image_test.png' %}'/><span class='p'>" + list_name[i] + "</span><div id='bottom' class='button_profile'><p class='button_profile-text'>PROFILE</p><img class='button_profile-image' src='{% static 'img/arrow1.svg' %}' /></div></div>"
+        
+                }
+                    else {
+                    elemento.innerHTML =  elemento.innerHTML;
+                }
+            }
+        
+        }
+    </script>
+</div>
+
+
+{% endblock %}
+

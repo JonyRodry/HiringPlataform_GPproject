@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form method="get">
+    {{ filter.form | crispy}}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for user in filter.qs %}
+    <li>{{ user.name }} - {{ user.email }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

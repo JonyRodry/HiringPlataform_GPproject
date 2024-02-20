@@ -1,0 +1,336 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/candidateform.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/candidate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/editCandidate.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+
+<body>
+	<div class="container-candidate list" id="list_container">
+		<form id="create-form" method="POST" action="" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="row justify-content-between" style="padding-bottom: 1px;">
+				<h1>EDIT CANDIDATE</h1>
+				<button id="save-edit-button" type="submit" value="Submit" class="button_profile_edit" form="create-form">
+					<p class="button_profile_edit-text">SAVE</p>
+					<img class="button_profile_edit-image" src="{% static 'img/arrow2.svg' %}" />
+				</button>
+			</div>
+			{% if user.admin.type == 0 %}
+			<div class="row justify-content-end">
+					<div class="button_profile_edit">
+						<button type="submit" id="delete-edit-button" form="create-form" name="delete_candidate" value="delete_" class="button_profile-text btn-default" style="margin: 0px 12px !important;">DELETE PROFILE</button> 
+						<img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+					</div>  
+			</div>
+			{% else %}
+			<div class="row justify-content-end" style="margin-top: 41px;"></div>
+			{% endif %}
+			<div class="row">
+				<div class="col-4">
+					<div class="row person_background" style="height: 100%">
+						<div class="col-12">
+							{% if candidate %}
+							<img class="pic" src="{{candidate.image.url}}">
+							{% else %}
+							<img class="pic" src="{% static 'img/profile.png' %}">
+							{% endif %}
+						</div>
+						<div class="col-12" style="display: flex; justify-content: center;">
+							<button type="button" id="btnUpload" class="upload-button-candidate">UPLOAD IMAGE →</button>
+							<input type="file" name="image" accept="image/*" id="id_image" style="opacity:0%;display:none;">
+						</div>
+						<div class="col-12">
+							<h2 class="input_name_candidate">{{ form.name }}</h2>
+						</div>
+						<div class="col-1"></div>
+						<div class="col-5" style="padding-left: 35px;">
+							<p class="p_bold">TYPE</p>
+						</div>
+						<div class="col-6" style="padding-left: 30px;">
+							<p class="p_bold">ENTERPRISE</p>
+						</div>
+						<div class="col-1"></div>
+						<div class="col-5" style="padding-left: 35px;">
+							<p>{{ form.type }}</p>
+						</div>
+						<div class="col-6" style="padding-left: 30px;">
+							<p>{{ form.enterprise }}</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-8">
+					<div class="row" style="height: 100%">
+						<div class="col-12 person_bg">
+							<div class="row">
+								<div class="col-6">
+									<p class="p_bold">EMAIL</p>
+								</div>
+								<div class="col-6">
+									<p class="p_bold">CONTACT</p>
+								</div>
+							</div>
+							<div class="row padding_row">
+								<div class="col-6">
+									<p>{{ form.email }}</p>
+								</div>
+								<div class="col-6">
+									<p>{{ form.phone_number }}</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<p class="p_bold">LOCATION</p>
+								</div>
+								<div class="col-6">
+									<p class="p_bold">EXPERIENCE LEVEL</p>
+								</div>
+							</div>
+
+							<div class="row padding_row">
+								<div class="col-6">
+									<p>{{ form.location }}</p>
+								</div>
+								<div class="col-6">
+									<p>{{ form.years_exp }}</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<p class="p_bold">LINKEDIN</p>
+								</div>
+								<div class="col-6">
+									<p class="p_bold">DOCUMENTS<img class="documents-img" id="btnUploadFile" src="{% static 'img/documents.png' %}"></p>
+								</div>
+							</div>
+
+							<div class="row padding_row">
+								<div class="col-6">
+									<p>{{ form.linkedin }}</p>
+								</div>
+								<div class="col-6">
+									{% for file in file_list %}
+									<a href="{{file.pdf.url}}" download>{{file.name}}</a>
+									{% endfor %}
+									<input type="file" name="myfiles" id="id_file" style="opacity:0%;display:none;"multiple>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<p class="p_bold">SOURCE</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<p>{{ form.source }}</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 person_bg1">
+							<div class="row">
+								<div class="col-6">
+									<p class="p_bold"> CONTACT PERSON</p>
+								</div>
+
+								<div class="col-6">
+									<p class="p_bold">HIRING MANAGER</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<input required autocomplete="off" class="input-field-1" id="contact-person-input" onclick="open_contactperson_popup()" 
+									{% if candidate.responsibleHR != None %}
+										value="{{candidate.responsibleHR.name}}"
+									{% elif candidate.responsibleHM != None %}
+										value="{{candidate.responsibleHM.name}}" 
+									{% endif %}>
+									</input>
+								</div>
+								<div class="col-6">
+									<input required autocomplete="off" class="input-field-1" id="hiring-manager-input" onclick="open_hiringmanager_popup()"
+									{% if candidate.HiringManager != None %}
+										value="{{candidate.HiringManager.name}}"
+									{% endif %}>
+									</input>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" style="width: 100%; display: flex; justify-content: flex-end; margin-top: 30px;">
+					<button type="button" class="add-comment-button" onclick="open_comments_popup()"> ADD →</button>
+				</div>
+				<div class="row" style="width: 100%;">
+					<div class="col-4 class_parent">
+						<div class="row row_status_comments">
+							<h3>STATUS</h3>
+						</div>
+						<div class="row div1 row_status_smaller" style="margin-left: 0px; height: 150px;">
+							<div class="col-12" style="display: flex; flex-direction: column; justify-content: center;">
+								<div class="row" style="display:flex; justify-content: center; margin-bottom: 15px;">
+									<p id="status-text" style="margin-bottom: 20px !important; margin-top: 0px !important;">{{candidate_status}}</p>
+								</div>
+								<div class="row" style="display: flex; justify-content: center;">
+									<button type="button" class="change-status-button" onclick="open_status_popup()">CHANGE STATUS →</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-8 class_parent">
+						<div class="row row_status_comments">
+							<h3>COMMENTS</h3>
+						</div>
+						<div class="row row_comments" style="margin-left: 10px;">
+							<div id="comment-add" style="display: none; width: 100%;">
+								<div class="col-12 name_comment">
+									<p>New comment:</p>
+								</div>
+								<div class="col-12 space_comments">
+									<h4 id="comment-content"></h4>
+								</div>
+								<hr class="separate_comments">
+							</div>
+							{% if comments %}
+								{% for name, comment in comments%}
+									<div class="col-12 name_comment">
+										<p>{{name}}</p>
+									</div>
+									<div class="col-12 space_comments">
+										<h4>{{comment}}</h4>
+									</div>
+									<hr class="separate_comments">
+								{% endfor %}
+							{% else %}
+								<div class="col-12" id="no-comments">
+									<p>No comments.</p>
+								</div>
+							{% endif %}
+							<p id="comments-text" style="margin-left: 12px;"></p>
+						</div>
+					</div>
+				</div>
+
+				<div id="contact-person-popup">
+					<p class="popup-title-label">CONTACT PERSON</p>
+					<select name="contact-person" id="contact-person-dropdown"
+						class="btn btn-secondary btn-sm dropdown-toggle contact-person-dropdown">
+						{% for person in contact_person_list %}
+						<option>{{ person.name }} ({{ person.classname }})</option>
+						{% endfor %}
+
+					</select>
+
+					<select id="contact-person-type" class="invisible">
+						{% for person in contact_person_list %}
+						<option>{{ person.classname }}</option>
+						{% endfor %}
+					</select>
+
+					<select id="contact-person-id" class="invisible">
+						{% for person in contact_person_list %}
+						<option>{{ person.id }}</option>
+						{% endfor %}
+					</select>
+
+					<button type="button" class="save-button" onclick="save_contactperson_popup()">SAVE →</button>
+
+					<div class="invisible">{{ form.contact_person_type }}</div>
+					<div class="invisible">{{ form.contact_person_id }}</div>
+				</div>
+
+				<div id="hiring-manager-popup">
+					<p class="popup-title-label">HIRING MANAGER</p>
+					<div class="popup-dropdown">{{ form.HiringManager }}</div>
+					<button type="button" class="save-button" onclick="save_hiringmanager_popup()">SAVE →</button>
+				</div>
+
+				<div id="change-status-popup">
+					<p class="popup-title-label">STATUS</p>
+					<div class="status-dropdown"><label for="name-status" class="label">STATUS:</label>{{ form.status }}
+					</div>
+					<div class="pipeline-status-dropdown"><label for="name-status" class="label">PHASE:</label>{{form.pipeline_status }}</div>
+					<button type="button" class="save-button" onclick="save_status_popup()">SAVE →</button>
+				</div>
+
+				<div id = "add-comment-popup">
+					<p class="popup-title-label">ADD COMMENT</p>
+					<div class="save-comments"><textarea id="comment-popup" name="comment-popup" rows="12" cols="80" placeholder="Add comment... "></textarea></div>
+					<button type="button" class="save-button" onclick="save_comment_popup()"> SAVE →</button>	
+				</div>
+			</div>
+
+			<script>
+				let btnUpload = document.getElementById("btnUpload");
+				let input = document.getElementById("id_image");
+				var input_file = document.getElementById("id_file");
+				var button_file = document.getElementById("btnUploadFile");
+
+				btnUpload.addEventListener('click', () => {
+					input.click();
+				})
+
+				button_file.addEventListener('click', () => {
+					input_file.click();
+				})
+
+				function save_comment_popup(){
+					var comments_text = document.getElementById("comments-text");
+					var comments_add_text = document.getElementById("comment-popup").value;
+					console.log(comments_add_text);
+					if(comments_add_text !== " Add comment... "){
+						comments_text.value = comments_add_text;
+
+						var no_comments_text = document.getElementById("no-comments");
+						if(no_comments_text!=null){
+							comments_text.innerHTML = comments_add_text;
+							no_comments_text.style.display = "none";
+						}
+						else {
+							var comments_text_add = document.getElementById("comment-add");
+							comments_text_add.style.display = "block";
+
+							var comments_text_add = document.getElementById("comment-content");
+							comments_text_add.innerHTML = comments_add_text;
+						}
+					}
+
+					add_comment_popup.style.display = 'none';
+				}
+
+			</script>
+		</form>
+	</div>
+</body>
+
+<script src="{% static 'js/editCandidate.js' %}"></script>
+<script>
+	window.onload = function exampleFunction() {
+		var type_field = document.getElementById("id_contact_person_type");
+		var id_field = document.getElementById("id_contact_person_id");
+		if ("{{candidate.responsibleHR}}" != "None") {
+			type_field.value = "{{candidate.responsibleHR.type}}";
+			id_field.value = "{{candidate.responsibleHR.id}}";
+		}else if("{{candidate.responsibleHM}}" != "None") {
+			type_field.value = "{{candidate.responsibleHM.type}}";
+			id_field.value = "{{candidate.responsibleHM.id}}";
+		}
+	}
+</script>
+
+{% endblock %}
+
+

@@ -1,0 +1,192 @@
+.save-edit-button {
+	position: absolute;
+	top: 14%;
+	right: 5%;
+
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	
+	color: #161616;
+
+	background: transparent;
+  	border: 0px solid transparent;
+}
+
+.delete-edit-button {
+	position: absolute;
+	top: 20%;
+	right: 5%;
+
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	
+	color: #161616;
+
+	background: transparent;
+  	border: 0px solid transparent;
+}
+
+.row_status_comments {
+    margin-top: 0px;
+}
+
+.add-comment-button {
+
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	
+	color: #161616;
+
+	background: transparent;
+  	border: 0px solid transparent;
+}
+
+input#id_name {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_name:focus {
+    outline: none;
+}
+
+input#id_type {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_type:focus {
+    outline: none;
+}
+
+input#id_enterprise {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_enterprise:focus {
+    outline: none;
+}
+
+input#id_email {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_email:focus {
+    outline: none;
+}
+
+input#id_location {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_location:focus {
+    outline: none;
+}
+
+input#id_linkedin {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_linkedin:focus {
+    outline: none;
+}
+
+input#id_source {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_source:focus {
+    outline: none;
+}
+
+input#id_contact {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_contact:focus {
+    outline: none;
+}
+
+input#id_experiencelevel {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_experiencelevel:focus {
+    outline: none;
+}
+
+#add-comment-popup {
+    
+    position: absolute;
+    width: 945px;
+    height: 436px;
+    left: 20%;
+    top: 40%;
+    
+    background: #FFFFFF;
+    border-radius: 6px;
+
+	display: none;
+}
+
+#comment-popup {
+    
+    position: absolute;
+    left: 7%;
+    top: 20%;
+}
+
+.row_comments {
+    margin-bottom: 0px !important;
+}
+
+#comments-text {
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-size: 16px;
+	line-height: 21px;
+	color: #161616;
+}
+
+.profile-img{
+    width: 170px;
+    height: 170px;  
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+
+.profile_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #fff;
+    padding: 15px;
+}

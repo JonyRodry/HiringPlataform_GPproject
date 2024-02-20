@@ -1,0 +1,47 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/manage_permissions.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+
+<div class="content_page">
+    <div class="row">
+        <h1 style="margin-left: 1%; margin-top:1%;">MANAGE PERMISSIONS</h1>
+    </div>
+
+    <div class="row manage_bg" style="margin-top: 40px;">
+        <div style="margin-left: 30px;">
+            <p>HUMAN RESOURCES</p>
+        </div>
+        <div class="ml-auto" style="margin-right: 20px;">
+            <a href="{% url 'list_hr' %}" style="text-decoration:none;">
+                <div class="button_manage">
+                    <p class="button-text_manage">VIEW</p> 
+                    <img class="button-image_manage" src="{% static 'img/arrow3.svg' %}" />
+                </div> 
+            </a> 
+        </div>
+        
+    </div>
+
+    <div class="row justify-content-between manage_bg">
+        <div style="margin-left: 30px;">
+            <p>HIRING MANAGERS</p>
+        </div>
+        <div class="ml-auto" style="margin-right: 20px;">
+            <a href="{% url 'list_hm' %}" style="text-decoration:none;">
+                <div class="button_manage">
+                    <p class="button-text_manage">VIEW</p> 
+                    <img class="button-image_manage" src="{% static 'img/arrow3.svg' %}" />
+                </div> 
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

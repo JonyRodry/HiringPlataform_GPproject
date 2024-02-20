@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hm.css' %}">
+</head>
+{% endblock css %}
+
+{% block content %}
+<div class="content_page">
+    <form method="post">
+    {% csrf_token %}
+        <div class="row justify-content-between">
+            <h1 class="title">HIRING MANAGERS</h1>
+            <div class="button_profile_edit">
+                <button type="submit" name="hm_id" value="{{ id }}" class="button_profile-text btn btn-default">EDIT</button> 
+                <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+            </div>       
+        </div>
+        <div class="row container_hm">
+            <div class="col-md-3 profile_details">
+                <img class="pic"  src="{{hm_perfil.image.url}}" />
+                <h2 class="profile_name">Hiring Manager</h2>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row params profile-params">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-6"><p><b>NAME</b></p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><p class="p">{{hm_perfil.name}}</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row params profile-params">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-6"><p><b>EMAIL</b></p></p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><p class="p">{{hm_perfil.email}}</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row"><div class="col-sm-4"><h2 class="subtitle">CANDIDATES</h1></div></div>
+        <div class="row">
+            {% for candidate in candidates %}
+                <div class="col-sm-4">
+                    <div class="col-sm-12 container_candidate ">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img class="pic_candidate"  src="{{candidate.image.url}}" style="width: 90px; height: 90px; object-fit: cover; border-radius: 50%; margin-top: 30%;"/>
+                            </div>
+                            <div class="col-sm-9">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-12"><p class="p">{{candidate.name}}</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 5%;">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6"><p><b>TYPE</b></p></p></div>
+                                            <div class="col-6"><p><b>ENTERPRISE</b></p></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6"><p class="p">{{candidate.type}}</p></div>
+                                            <div class="col-6"><p class="p">{{candidate.enterprise}}</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bottom" class="row" class="button_profile">
+                            <div class="col-md-8"></div>
+                            <button type="submit" name="candidate_id" value="{{ candidate.id }}" class="button_profile-text btn btn-default"  class="col-md-3" style="color: #C79E0A;">PROFILE</button> 
+                            <img class="button_profile-image" src="{% static 'img/arrow1.svg' %}" />
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+    <script>  
+        var pass = document.getElementById("password");
+        var new_pass = '';
+
+        for (let i = 0; i < pass.innerText.length; i++) {
+            new_pass = new_pass + '*';
+        }
+        
+        pass.innerText = new_pass;
+    </script>
+</div>
+{% endblock %}

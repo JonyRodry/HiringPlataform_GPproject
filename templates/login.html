@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset='UTF-8' />
+    <link
+        href='https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,500,600|IBM+Plex+Sans:200,300,400,500,600,700&display=swap'
+        rel='stylesheet'>
+    <link rel="icon" href="{% static 'images/grama_logo.jpg' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+
+
+<body>
+    <div class="split left">
+      <div class="centered">
+        <img src="{% static 'images/grama_logo.jpg' %}" alt="grama_logo">
+        <h1 id="HirPlat">Hiring Platform</h1>
+      </div>
+      <p id="grama">grama.</p>
+    </div>
+    
+    <div class="split right">
+      <div class="left_centered">
+        <h1 class="type_font" id="title_login">Log in</h1>
+        <form method="POST" action="">
+          {% csrf_token %}
+          <input class="input type_font" type="text" name="username" placeholder="Email">
+          
+          <input class="input type_font" type="password" name="password" placeholder="Password">
+          
+          <input class="signin_btn" type="submit" value="SIGN IN →">
+        </form>
+      </div>
+
+      {% for message in messages %}
+        <p id="messages">{{message}}</p>
+			{% endfor %}	
+
+    </div>
+</body>
+
+</html>

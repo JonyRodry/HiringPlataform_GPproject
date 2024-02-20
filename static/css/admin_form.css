@@ -1,0 +1,101 @@
+.content_page {
+    height: calc(100vh - 64px) !important;
+    padding: 0px 71px;
+    padding-top: 37px;
+    margin: 0px;
+}
+
+.title {
+    margin: 0px !important;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.container_admin {
+    margin-top: 58px !important;
+    background: #EEEEEE;
+    border-radius: 6px;
+}
+
+.pic{
+    max-width: 170px;
+    height: 170px;   
+    width: auto;
+    object-fit: cover; 
+    border-radius: 50%;
+}
+
+.profile_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #fff;
+    padding: 15px;
+}
+
+.profile_name {
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 27px;
+    color: #161616;
+    margin-top: 46px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.button_profile {
+    display: flex;
+    height: 51px;
+    align-items: center;
+}
+
+.button_profile_edit {
+    display: flex;
+    height: 51px;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.button_profile-text {
+    color: #161616;
+    width: fit-content;
+    margin: 0px 12px !important;
+}
+
+.params {
+    margin-top: 92px;
+}
+
+.profile-params {
+    margin-bottom: 89px;
+}
+
+input#id_password {
+    border: none;
+    background-color: #EEE;
+    border-bottom: 1px solid #161616;
+}
+
+input#id_password:focus {
+    outline: none;
+}
+
+.upload-button {
+	font-family: IBM Plex Mono;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	
+	color: #161616;
+
+	background: transparent;
+  	border: 0px solid transparent;
+}
